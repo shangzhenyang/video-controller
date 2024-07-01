@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Video Controller</title>
+	<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+	<h1>Video Controller</h1>
+	<label for="speed">Playback Speed:</label>
+	<input type="range" id="speed-range" min="0.01" max="2.00" value="1" step="0.01">
+	<div class="input-group">
+		<input type="number" id="speed-input" value="1" step="0.01" min="0.01" max="2.00">
+		<button id="resetSpeed">Reset</button>
+	</div>
+	<label for="loop-start">Loop Start (mm:ss):</label>
+	<input type="text" id="loop-start" value="00:00">
+	<label for="loop-end">Loop End (mm:ss):</label>
+	<input type="text" id="loop-end" value="00:00">
+	<button id="set-loop">Set Loop</button>
+	<button id="cancel-loop">Cancel Loop</button>
+	<footer>&copy; 2024 Shangzhen Yang</footer>
+	<script src="popup.js"></script>
+</body>
+</html>
