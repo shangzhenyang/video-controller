@@ -86,6 +86,14 @@ document.getElementById("end-current").addEventListener("click", () => {
 		.catch(console.error);
 });
 
+document.getElementById("beat-range").addEventListener("input", (event) => {
+	document.getElementById("beat-input").value = event.target.value;
+});
+
+document.getElementById("beat-input").addEventListener("input", (event) => {
+	document.getElementById("beat-range").value = event.target.value;
+});
+
 document.getElementById("set-loop").addEventListener("click", () => {
 	const startParts = document
 		.getElementById("loop-start")
@@ -113,6 +121,19 @@ document.getElementById("cancel-loop").addEventListener("click", () => {
 	document.getElementById("loop-end").value = "00:00";
 	sendQuery({
 		action: "cancelLoop",
+	});
+});
+
+document.getElementById("start-beat-count").addEventListener("click", () => {
+	sendQuery({
+		action: "startBeatCount",
+		interval: parseInt(document.getElementById("beat-input").value),
+	});
+});
+
+document.getElementById("stop-beat-count").addEventListener("click", () => {
+	sendQuery({
+		action: "stopBeatCount",
 	});
 });
 

@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
 	<meta charset="utf-8">
 	<title>Video Controller</title>
 	<link rel="stylesheet" href="css/general.css">
 	<link rel="stylesheet" href="css/popup.css">
 </head>
+
 <body>
 	<h1>Video Controller</h1>
 
 	<label for="speed-input">Playback Speed:</label>
-	<input type="range" id="speed-range" min="0.01" max="2.00" value="1" step="0.01" aria-label="Playback Speed">
+	<input type="range" id="speed-range" value="1" step="0.01" min="0.01" max="2.00" aria-label="Playback Speed">
 	<div class="input-group">
 		<input type="number" id="speed-input" value="1" step="0.01" min="0.01" max="2.00">
 		<button id="reset-speed" class="button">Reset</button>
 	</div>
-	
+
 	<label for="loop-start">Loop Start (mm:ss):</label>
 	<div class="input-group">
 		<input type="text" id="loop-start" value="00:00">
@@ -28,11 +30,22 @@
 		<button id="end-current" class="button">Current</button>
 	</div>
 
-	<button id="set-loop" class="button">Set Loop</button>
-	<button id="cancel-loop" class="button">Cancel Loop</button>
-	<a class="button" href="local-player.html" target="_blank">Open Local Player</a>
+	<label for="beat-input">Beat Interval (ms):</label>
+	<input type="range" id="beat-range" value="450" step="50" min="100" max="2000" aria-label="Beat Interval">
+	<input type="number" id="beat-input" value="450" step="50" min="100" max="2000">
+
+	<div class="button-group">
+		<button id="set-loop" class="button">Set Loop</button>
+		<button id="cancel-loop" class="button" aria-label="Cancel Loop">Cancel</button>
+	</div>
+	<div class="button-group">
+		<button id="start-beat-count" class="button">Start Beat</button>
+		<button id="stop-beat-count" class="button" aria-label="Stop Beat">Stop</button>
+	</div>
+	<a class="button" href="https://shangzhenyang.github.io/video-controller/local-player.html" target="_blank">Open Local Player</a>
 
 	<footer>&copy; 2024 <a href="https://www.shangzhenyang.com/" target="_blank">Shangzhen Yang</a></footer>
 	<script src="js/popup.js"></script>
 </body>
+
 </html>

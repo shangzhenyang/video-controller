@@ -85,7 +85,6 @@ label {
 .input-group {
 	display: flex;
 	gap: 5px;
-	justify-content: space-between;
 }
 
 .input-group input {

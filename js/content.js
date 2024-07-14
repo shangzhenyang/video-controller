@@ -19,6 +19,7 @@ observer.observe(document.body, {
 
 function initializeVideoController(videoElement) {
 	const video = videoElement;
+	let beatCountInterval = null;
 	let loopStart = 0;
 	let loopEnd = 0;
 	let isLooping = false;
@@ -41,6 +42,32 @@ function initializeVideoController(videoElement) {
 		if (video) {
 			video.playbackRate = speed;
 		}
+	};
+
+	const startBeatCount = (interval) => {
+		if (beatCountInterval) {
+			clearInterval(beatCountInterval);
+		}
+		let beatNumber = 1;
+		let leadingNumber = 1;
+		beatCountInterval = setInterval(() => {
+			if (!video.paused && !video.ended) {
+				speak(beatNumber === 1 ? leadingNumber : beatNumber);
+				beatNumber++;
+				if (beatNumber > 8) {
+					beatNumber = 1;
+					if (leadingNumber === 8) {
+						leadingNumber = 1;
+					} else {
+						leadingNumber++;
+					}
+				}
+			}
+		}, interval);
+	};
+
+	const stopBeatCount = () => {
+		clearInterval(beatCountInterval);
 	};
 
 	video.addEventListener("timeupdate", () => {
@@ -75,11 +102,24 @@ function initializeVideoController(videoElement) {
 				setPlaybackSpeed(request.speed);
 				break;
 			}
+			case "startBeatCount": {
+				startBeatCount(request.interval);
+				break;
+			}
+			case "stopBeatCount": {
+				stopBeatCount();
+				break;
+			}
 			default:
 				break;
 		}
 		return true;
 	});
+}
+
+function speak(text) {
+	const utterance = new SpeechSynthesisUtterance(text);
+	speechSynthesis.speak(utterance);
 }
 
 const existingVideo = document.querySelector("video");
