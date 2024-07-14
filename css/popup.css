@@ -1,0 +1,19 @@
+a {
+	color: inherit;
+}
+
+body {
+	padding: 25px;
+	width: 300px;
+}
+
+h1 {
+	color: rgb(50, 50, 50);
+	font-size: 18px;
+	margin: 0 0 20px 0;
+}
+
+footer {
+	color: rgb(85, 85, 85);
+	margin-top: 10px;
+}

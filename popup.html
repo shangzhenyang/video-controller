@@ -1,25 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
 	<meta charset="utf-8">
 	<title>Video Controller</title>
-	<link rel="stylesheet" href="popup.css">
+	<link rel="stylesheet" href="css/general.css">
+	<link rel="stylesheet" href="css/popup.css">
 </head>
 <body>
 	<h1>Video Controller</h1>
-	<label for="speed">Playback Speed:</label>
-	<input type="range" id="speed-range" min="0.01" max="2.00" value="1" step="0.01">
+
+	<label for="speed-input">Playback Speed:</label>
+	<input type="range" id="speed-range" min="0.01" max="2.00" value="1" step="0.01" aria-label="Playback Speed">
 	<div class="input-group">
 		<input type="number" id="speed-input" value="1" step="0.01" min="0.01" max="2.00">
-		<button id="resetSpeed">Reset</button>
+		<button id="reset-speed" class="button">Reset</button>
 	</div>
+	
 	<label for="loop-start">Loop Start (mm:ss):</label>
-	<input type="text" id="loop-start" value="00:00">
+	<div class="input-group">
+		<input type="text" id="loop-start" value="00:00">
+		<button id="start-current" class="button">Current</button>
+	</div>
+
 	<label for="loop-end">Loop End (mm:ss):</label>
-	<input type="text" id="loop-end" value="00:00">
-	<button id="set-loop">Set Loop</button>
-	<button id="cancel-loop">Cancel Loop</button>
-	<footer>&copy; 2024 Shangzhen Yang</footer>
-	<script src="popup.js"></script>
+	<div class="input-group">
+		<input type="text" id="loop-end" value="00:00">
+		<button id="end-current" class="button">Current</button>
+	</div>
+
+	<button id="set-loop" class="button">Set Loop</button>
+	<button id="cancel-loop" class="button">Cancel Loop</button>
+	<a class="button" href="local-player.html" target="_blank">Open Local Player</a>
+
+	<footer>&copy; 2024 <a href="https://www.shangzhenyang.com/" target="_blank">Shangzhen Yang</a></footer>
+	<script src="js/popup.js"></script>
 </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Local Player</title>
+	<link rel="stylesheet" href="css/general.css">
+	<link rel="stylesheet" href="css/local-player.css">
+</head>
+
+<body>
+	<header>
+		<h1>Local Player</h1>
+		<div class="control-panel">
+			<label for="speed-input">Playback Speed:</label>
+			<input type="range" id="speed-range" min="0.01" max="2.00" value="1" step="0.01" aria-label="Playback Speed">
+			<div class="input-group">
+				<input type="number" id="speed-input" value="1" step="0.01" min="0.01" max="2.00">
+				<button id="reset-speed" class="button">Reset</button>
+			</div>
+		</div>
+	</header>
+	<main>
+		<div id="video-container" hidden>
+			<video id="video" controls></video>
+		</div>
+		<div id="select-container">
+			<button id="select-video" class="button center">Select Video/Audio File</button>
+		</div>
+	</main>
+	<input type="file" id="file-input" accept="video/*, audio/*" hidden>
+	<script src="js/local-player.js"></script>
+</body>
+
+</html>

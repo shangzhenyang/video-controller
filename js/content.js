@@ -1,6 +1,6 @@
 const observer = new MutationObserver((mutations) => {
 	mutations.forEach((mutation) => {
-		if (mutation.type === "childList" && mutation.addedNodes.length) {
+		if (mutation.type === "childList" && mutation.addedNodes.length > 0) {
 			mutation.addedNodes.forEach((node) => {
 				if (node.nodeName === "VIDEO") {
 					initializeVideoController(node);
@@ -53,14 +53,32 @@ function initializeVideoController(videoElement) {
 		}
 	});
 
-	chrome.runtime.onMessage.addListener((request) => {
-		if (request.action === "setSpeed") {
-			setPlaybackSpeed(request.speed);
-		} else if (request.action === "setLoop") {
-			setLoop(request.start, request.end);
-		} else if (request.action === "cancelLoop") {
-			cancelLoop();
+	chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
+		switch (request.action) {
+			case "cancelLoop": {
+				cancelLoop();
+				break;
+			}
+			case "getCurrentTime": {
+				sendResponse(video.currentTime);
+				break;
+			}
+			case "getPlaybackSpeed": {
+				sendResponse(video.playbackRate);
+				break;
+			}
+			case "setLoop": {
+				setLoop(request.start, request.end);
+				break;
+			}
+			case "setSpeed": {
+				setPlaybackSpeed(request.speed);
+				break;
+			}
+			default:
+				break;
 		}
+		return true;
 	});
 }
 

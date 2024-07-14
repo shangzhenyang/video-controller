@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
 	"name": "Video Controller",
-	"version": "1.0",
+	"version": "1.1",
 	"description": "Control video playback speed and loop segments.",
 	"permissions": ["activeTab", "scripting"],
 	"action": {
@@ -10,7 +10,7 @@
 	"content_scripts": [
 		{
 			"matches": ["<all_urls>"],
-			"js": ["content.js"],
+			"js": ["js/content.js"],
 			"all_frames": true,
 			"run_at": "document_end"
 		}
